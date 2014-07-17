@@ -20,6 +20,11 @@ public class EssenseCollectorTile extends BasicTileEntity implements IEssenceTil
         this.essence=0;
         this.maxEssence=maxEssence;
     }
+    public EssenseCollectorTile(){
+        super();
+        this.essence=0;
+        this.maxEssence=1000;
+    }
 
     public int getEssence(){
         return this.essence;

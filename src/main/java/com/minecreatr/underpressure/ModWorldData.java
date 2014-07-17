@@ -1,11 +1,14 @@
 package com.minecreatr.underpressure;
 
 import com.minecreatr.underpressure.util.BlockData;
+import net.minecraft.nbt.NBTTagByte;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.nbt.NBTTagIntArray;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldSavedData;
 import net.minecraft.world.storage.MapStorage;
+import net.minecraftforge.common.util.Constants;
 
 import java.util.ArrayList;
 
@@ -20,27 +23,35 @@ public class ModWorldData extends WorldSavedData{
     public ModWorldData(){
         super(key);
     }
+    public ModWorldData(String nothing){
+        super(key);
+    }
     @Override
     public void readFromNBT(NBTTagCompound nbt) {
-        // Get your data from the nbt here
-        int portalsN = nbt.getInteger("portalsN");
-        NBTTagList portalsL = nbt.getTagList("portals", portalsN);
+        //int portalsN = nbt.getInteger("portalsN");
+        NBTTagList portalsL = (NBTTagList)nbt.getTag("portals");
+//        System.out.println("=================================");
+//        System.out.println("TagCount: "+portalsL.tagCount());
+//        System.out.println("Is Working: "+nbt.getBoolean("testing"));
+//        System.out.println("=================================");
         for (int i=0;i<portalsL.tagCount();i++){
             portals.add(BlockData.fromPrim(portalsL.getCompoundTagAt(i).getIntArray("locs")));
         }
+        //System.out.println("READING NBT");
     }
 
     @Override
     public void writeToNBT(NBTTagCompound nbt) {
-        // Put your data in the nbt here
         NBTTagList portalsL = new NBTTagList();
-        nbt.setInteger("portalsN", portals.size());
+        //nbt.setInteger("portalsN", portals.size());
         for (int i=0;i<portals.size();i++){
             NBTTagCompound cur = new NBTTagCompound();
             cur.setIntArray("locs", portals.get(i).toPrim());
             portalsL.appendTag(cur);
         }
         nbt.setTag("portals", portalsL);
+        //nbt.setBoolean("testing", true);
+        //System.out.println("WRITING NBT");
     }
 
     public static ModWorldData forWorld(World world) {
