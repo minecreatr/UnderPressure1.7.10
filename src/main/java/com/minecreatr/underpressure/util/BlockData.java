@@ -13,10 +13,18 @@ public class BlockData {
     public int x;
     public int y;
     public int z;
+    public byte type;
     public BlockData(int x, int y, int z){
         this.x=x;
         this.y=y;
         this.z=z;
+        this.type = 0;
+    }
+    public BlockData(int x, int y, int z, byte type){
+        this.x=x;
+        this.y=y;
+        this.z=z;
+        this.type=type;
     }
 
     public int[] toPrim(){
@@ -26,6 +34,10 @@ public class BlockData {
 
     public static BlockData fromPrim(int[] in){
         return new BlockData(in[0], in[1], in[2]);
+    }
+
+    public static BlockData fromPrim(int[] in, byte type){
+        return new BlockData(in[0], in[1], in[2], type);
     }
 
     public TileEntity getTile(World worldObj){

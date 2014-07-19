@@ -59,14 +59,17 @@ public class InfusionRenderer extends TileEntitySpecialRenderer{
                 tile.getWorldObj().spawnParticle("fire", tile.xCoord+Math.random(), tile.yCoord+.25, tile.zCoord+Math.random(), 1, 1, 1);
             }
             else {
-                GL11.glTranslatef((float) x + 0.5F, (float) y+0.2f, (float) z + 0.5F);
                 Minecraft.getMinecraft().renderEngine.bindTexture(brick);
                 GL11.glPushMatrix();
+                GL11.glTranslatef((float) x + 0.5F, (float) y+0.2f, (float) z + 0.5F);
                 GL11.glRotatef(180F, 0.0F, 0.0F, 1.0F);
                 //A reference to your Model file. Again, very important.
                 this.model.render((Entity)null, 0.0F, 0.0F, -0.1F, 0.0F, 0.0F, 0.0625F);
                 //Tell it to stop rendering for both the PushMatrix's
+                GL11.glTranslatef(-((float) x + 0.5F), -((float) y+0.2f), -((float) z + 0.5F));
+                GL11.glRotatef(-180F, 0.0F, 0.0F, -1.0F);
                 GL11.glPopMatrix();
+                GL11.glTranslatef((float) x + 0.5F, (float) y+0.2f, (float) z + 0.5F);
             }
         }
     }

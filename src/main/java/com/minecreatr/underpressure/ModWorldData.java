@@ -35,7 +35,7 @@ public class ModWorldData extends WorldSavedData{
 //        System.out.println("Is Working: "+nbt.getBoolean("testing"));
 //        System.out.println("=================================");
         for (int i=0;i<portalsL.tagCount();i++){
-            portals.add(BlockData.fromPrim(portalsL.getCompoundTagAt(i).getIntArray("locs")));
+            portals.add(BlockData.fromPrim(portalsL.getCompoundTagAt(i).getIntArray("locs"), portalsL.getCompoundTagAt(i).getByte("type")));
         }
         //System.out.println("READING NBT");
     }
@@ -47,6 +47,7 @@ public class ModWorldData extends WorldSavedData{
         for (int i=0;i<portals.size();i++){
             NBTTagCompound cur = new NBTTagCompound();
             cur.setIntArray("locs", portals.get(i).toPrim());
+            cur.setByte("type", portals.get(i).type);
             portalsL.appendTag(cur);
         }
         nbt.setTag("portals", portalsL);
