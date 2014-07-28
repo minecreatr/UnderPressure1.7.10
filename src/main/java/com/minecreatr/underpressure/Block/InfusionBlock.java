@@ -23,8 +23,7 @@ import net.minecraft.world.World;
 public class InfusionBlock extends BasicBlock{
 
     public InfusionBlock(){
-        super(Material.rock, ModBlocks.INFUSION_BLOCK_NAME);
-        this.setBlockTextureName(Textures.TRANSPARENT_TEXTURE);
+        super(Material.rock, ModBlocks.INFUSION_BLOCK_NAME, Textures.TRANSPARENT_TEXTURE);
     }
 
     public boolean hasTileEntity(int meta){

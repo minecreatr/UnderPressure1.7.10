@@ -5,5 +5,7 @@ package com.minecreatr.underpressure.reference;
  */
 public class Reference {
 
-    public static String MODID = "underPressure";
+    public static final String MODID = "underPressure";
+
+    public static int POTION_TRAVEL_ID = 156;
 }

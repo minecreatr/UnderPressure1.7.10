@@ -5,5 +5,5 @@ package com.minecreatr.underpressure.reference;
  */
 public class ExternalMods {
 
-    public static String BUILDCRAFT = "BuildCraft|Core";
+    public static final String BUILDCRAFT = "BuildCraft|Core";
 }

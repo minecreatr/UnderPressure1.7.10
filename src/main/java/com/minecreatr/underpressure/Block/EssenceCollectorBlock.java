@@ -14,8 +14,7 @@ import net.minecraft.world.World;
 public class EssenceCollectorBlock extends BasicBlock{
 
     public EssenceCollectorBlock(){
-        super(Material.rock, ModBlocks.ESSENCE_COLLECTOR_BLOCK_NAME);
-        this.setBlockTextureName(Textures.INFUSION_BLOCK_ACTIVE);
+        super(Material.rock, ModBlocks.ESSENCE_COLLECTOR_BLOCK_NAME, Textures.INFUSION_BLOCK_ACTIVE);
     }
 
     public boolean hasTileEntity(int meta){

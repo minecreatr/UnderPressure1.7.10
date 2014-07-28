@@ -25,8 +25,7 @@ public class ChamberBlock extends BasicBlock{
 
     private IIcon glassIcon;
     public ChamberBlock(){
-        super(Material.rock, ModBlocks.CHAMBER_BLOCK_NAME);
-        this.setBlockTextureName(Textures.CHAMBER_BLOCK_TEXTURE);
+        super(Material.rock, ModBlocks.CHAMBER_BLOCK_NAME, Textures.CHAMBER_BLOCK_TEXTURE);
     }
 
 

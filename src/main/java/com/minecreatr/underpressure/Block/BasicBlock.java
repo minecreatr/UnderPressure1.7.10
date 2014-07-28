@@ -9,9 +9,10 @@ import net.minecraft.block.material.Material;
  */
 public class BasicBlock extends Block{
 
-    public BasicBlock(Material material, String name){
+    public BasicBlock(Material material, String name, String tex){
         super(material);
         this.setBlockName(name);
         this.setCreativeTab(UnderPressure.tab);
+        this.setBlockTextureName(tex);
     }
 }
