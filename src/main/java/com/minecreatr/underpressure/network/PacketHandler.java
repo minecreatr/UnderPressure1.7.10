@@ -4,6 +4,7 @@ package com.minecreatr.underpressure.network;
  * Created on 7/25/2014
  */
 import com.minecreatr.underpressure.UnderPressure;
+import com.minecreatr.underpressure.network.message.MessageChangeStepHeight;
 import com.minecreatr.underpressure.network.message.MessageRenderPortal;
 import com.minecreatr.underpressure.reference.Reference;
 import cpw.mods.fml.common.network.NetworkRegistry;
@@ -20,6 +21,6 @@ public class PacketHandler {
     }
 
     public static void init(){
-        INSTANCE.registerMessage(MessageRenderPortal.class, MessageRenderPortal.class, 0, Side.CLIENT);
+        INSTANCE.registerMessage(MessageChangeStepHeight.class, MessageChangeStepHeight.class, 0, Side.CLIENT);
     }
 }

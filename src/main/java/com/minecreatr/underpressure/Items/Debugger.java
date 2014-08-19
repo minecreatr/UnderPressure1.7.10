@@ -29,7 +29,8 @@ public class Debugger extends Item{
 //        data.portals.add(new BlockData(x, y, z));
 //        data.markDirty();
 //        player.addChatMessage(new ChatComponentText("New Portal Has been Created at: x=" + x + " y=" + y + " z=" + z));
-        player.addPotionEffect(new PotionEffect(Reference.POTION_TRAVEL_ID, 1));
-        return true;
+//        player.addPotionEffect(new PotionEffect(Reference.POTION_TRAVEL_ID, 1));
+//        return true;
+        return false;
     }
 }

@@ -15,4 +15,10 @@ public class BasicBlock extends Block{
         this.setCreativeTab(UnderPressure.tab);
         this.setBlockTextureName(tex);
     }
+
+    public BasicBlock(Material material, String name){
+        super(material);
+        this.setBlockName(name);
+        this.setCreativeTab(UnderPressure.tab);
+    }
 }

@@ -5,6 +5,7 @@ import com.minecreatr.underpressure.Block.ModBlocks;
 import com.minecreatr.underpressure.Commands.CommandListPortals;
 import com.minecreatr.underpressure.Items.ModItems;
 import com.minecreatr.underpressure.effect.ModPotions;
+import com.minecreatr.underpressure.entity.EntityMonorail;
 import com.minecreatr.underpressure.event.MainModEventListener;
 import com.minecreatr.underpressure.network.PacketHandler;
 import com.minecreatr.underpressure.reference.ExternalMods;
@@ -18,15 +19,18 @@ import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.event.FMLServerStartingEvent;
+import cpw.mods.fml.common.registry.EntityRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.command.ICommand;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.entity.EntityList;
 import net.minecraft.init.Items;
 import net.minecraft.potion.Potion;
 import net.minecraftforge.common.MinecraftForge;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
+import java.util.Random;
 
 /**
  * Created on 6/23/2014
@@ -59,6 +63,7 @@ public class UnderPressure {
     public void preInit(FMLPreInitializationEvent event){
         //setupPotions();
         PacketHandler.init();
+        registerEntity(EntityMonorail.class, "monorail");
         //ModPotions.initPotions();
         tab = new UnderPressureCreativeTab("underpressure.tabDefualt");
         ModBlocks.init();
@@ -90,6 +95,24 @@ public class UnderPressure {
                 System.err.println(e);
             }
         }
+    }
+
+    public static void registerEntity(Class entityClass, String name){
+        int entityID = EntityRegistry.findGlobalUniqueEntityId();
+        EntityRegistry.registerGlobalEntityID(entityClass, name, entityID);
+        EntityRegistry.registerModEntity(entityClass, name, entityID, instance, 64, 1, true);
+    }
+
+    public static void registerEntityWithEgg(Class entityClass, String name){
+        int entityID = EntityRegistry.findGlobalUniqueEntityId();
+        long seed = name.hashCode();
+        Random rand = new Random(seed);
+        int primaryColor = rand.nextInt() * 16777215;
+        int secondaryColor = rand.nextInt() * 16777215;
+
+        EntityRegistry.registerGlobalEntityID(entityClass, name, entityID);
+        EntityRegistry.registerModEntity(entityClass, name, entityID, instance, 64, 1, true);
+        EntityList.entityEggs.put(Integer.valueOf(entityID), new EntityList.EntityEggInfo(entityID, primaryColor, secondaryColor));
     }
 
     @Mod.EventHandler

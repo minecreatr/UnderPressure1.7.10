@@ -16,11 +16,13 @@ public class ModBlocks {
     public static String CHAMBER_GLASS_NAME = "underpressure.chamberGlass";
     public static String ESSENCE_COLLECTOR_BLOCK_NAME = "underpressure.essenceCollectorBlock";
     public static String STONE_TRAVELER_BLOCK_NAME = "underpressure.stoneTravellerBlock";
+    public static String CONNECTED_GLASS_NAME = "underpressure.connectedGlass";
     public static Block chamberBlock;
     public static Block infusionBlock;
     public static Block chamberGlass;
     public static Block essenceCollectorBlock;
     public static Block stoneTravelerBlock;
+    public static Block connectedGlass;
 
     public static void init(){
         chamberBlock=new ChamberBlock();
@@ -37,5 +39,8 @@ public class ModBlocks {
 
         stoneTravelerBlock = new StoneTravelerBlock();
         GameRegistry.registerBlock(stoneTravelerBlock, STONE_TRAVELER_BLOCK_NAME);
+
+        connectedGlass = new ConnectedGlass();
+        GameRegistry.registerBlock(connectedGlass, CONNECTED_GLASS_NAME);
     }
 }
